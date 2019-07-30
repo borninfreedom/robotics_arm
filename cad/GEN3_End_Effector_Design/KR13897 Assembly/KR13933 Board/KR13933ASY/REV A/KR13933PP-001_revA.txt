@@ -1,0 +1,34 @@
+Altium Designer Pick and Place Locations
+C:\Altium\Projects\KR13933\Project Outputs for KR13933\KR13933ASY\KR13933PP-001_revA.txt
+
+========================================================================================================================
+File Design Information:
+
+Date:       14-12-18
+Time:       14:56
+Revision:   8585
+Variant:    001
+Units used: mil
+
+Designator Comment            Layer    Footprint                          Center-X(mil) Center-Y(mil) Rotation Description                                                           
+D2         +24V               TopLayer LED-KINGBRIGHT-APT1608LSECK_J3-PRV -385.000      -805.000      180      "LED RED WATER CLEAR 1.8V 100MCD 640/625NM 0603 H0.85MM"              
+U1         IC-TI-TPS54560DDAR TopLayer IC-TI-TPS54560DDAR                 -290.000      -80.000       90       "IC DC/DC CONV 4.5-60VIN 0.8-58.8VOUT 5A -40C+125C SOPWRPAD-8 H1.7MM" 
+R5         Resistor           TopLayer RES_0805_H0.65mm                   -385.000      -725.000      180      "RES SMD 22.1K OHM 1% 1/8W 0805"                                      
+R4         RB                 TopLayer RES_0603_H0.55mm                   -225.000      235.000       180      "RES 11.5K OHM 1% 1/10W 0603 H0.55MM"                                 
+R3         Resistor           TopLayer RES_0603_H0.55mm                   -150.000      -145.000      90       "RES 162K OHM 1% 1/10W 0603 H0.55MM"                                  
+R2         Resistor           TopLayer RES_0603_H0.55mm                   -195.000      135.000       90       "RES 22.1K OHM 1% 1/10W 0603 H0.55MM"                                 
+R1         RA                 TopLayer RES_0603_H0.55mm                   -225.000      300.000       360      "RES 60.4K OHM 1% 1/10W 0603 H0.55MM"                                 
+L1         Inductor           TopLayer IND-ABRACON-ASPI-0630LR-100M-T15   -700.000      75.000        180      "IND 10UH 20% 4A 68 MOHM SMD 7.2X6.65MM H3MM"                         
+J5         PWR                TopLayer CON-PHOENIX-1725672                -405.000      500.000       180      "CONN TERM BLOCK 1LVL 4POS 2.54MM TH"                                 
+J4         NETWORK            TopLayer CON-ASSMANN-A-2004-2-4-LPS-N-R     115.000       -605.039      0        "CONN MOD JACK 8P8C R/A SHIELDED"                                     
+J3         USER               TopLayer CON-KYOCERA-046288020000846+       633.543       0.000         270      "CONN FFC BOTTOM 20POS 0.5MM R/A"                                     
+J1         GPIO               TopLayer CON-SULLINS-PEC07DAAN              215.000       500.000       180      "CONN HEADER BTB 2X7 2.54MM TIN TH ST H8.71MM"                        
+D1         DIO-MCC-SK510A-L   TopLayer DIO-MCC-SK510A-L                   -460.000      -5.000        270      "DIODE SCHOTTKY 100V 5A -55C+150C SMA H2.44MM"                        
+C8         Capacitor          TopLayer CAP_0603_H0.90mm                   -290.000      165.000       180      "CAP CER 4.7NF 100V X7R 10% 0603 H0.9MM"                              
+C7         Capacitor          TopLayer CAP_0603_H0.90mm                   -290.000      100.000       180      "CAP CER 4.7PF 50V C0G 0.25PF 0603 H0.9MM"                            
+C6         Capacitor          TopLayer CAP_1210_H2.80mm                   -700.000      -255.000      360      "CAP CER 47UF 16V X5R 20% 1210 H2.8MM"                                
+C5         Capacitor          TopLayer CAP_1210_H2.80mm                   -700.000      -130.000      360      "CAP CER 47UF 16V X5R 20% 1210 H2.8MM"                                
+C4         Capacitor          TopLayer CAP_0603_H0.90mm                   -340.000      -260.000      180      "CAP CER 1UF 50V X5R 10% 0603 H0.9MM"                                 
+C3         Capacitor          TopLayer CAP_1210_H2.80mm                   -340.000      -480.000      180      "CAP CER 3.3UF 50V 10% X7R 1210 H2.8MM"                               
+C2         Capacitor          TopLayer CAP_1210_H2.80mm                   -340.000      -355.000      180      "CAP CER 3.3UF 50V 10% X7R 1210 H2.8MM"                               
+C1         Capacitor          TopLayer CAP_0603_H0.90mm                   -460.000      -180.000      180      "CAP CER 100NF 50V X5R 10% 0603 H0.9MM"                               
