@@ -1,0 +1,6 @@
+The purpose of this course is to introduce you to basics of modeling, design, planning, and control of robot systems. In essence, the material treated in this course is a brief survey of relevant results from geometry, kinematics, statics, dynamics, and control.
+The course is presented in a standard format of lectures, readings and problem sets. There will be an in-class midterm and final examination. These examinations will be open book. Lectures will be based mainly, but not exclusively, on material in the Lecture Notes book. Lectures will follow roughly the same sequence as the material presented in the book, so it can be read in anticipation of the lectures
+
+Topics: robotics foundations in kinematics, dynamics, control, motion planning, trajectory generation, programming and design. 
+
+Prerequisites: matrix algebra.
