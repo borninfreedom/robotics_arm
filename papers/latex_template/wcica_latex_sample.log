@@ -1,0 +1,291 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=latex 2019.8.20)  12 SEP 2019 20:17
+entering extended mode
+ restricted \write18 enabled.
+ Source specials enabled.
+ %&-line parsing enabled.
+**wcica_latex_sample.tex
+(./wcica_latex_sample.tex
+LaTeX2e <2018-12-01>
+(./IEEEtran.cls
+Document Class: IEEEtran 2002/08/13 revision V1.6 by Michael Shell
+-- See the "IEEEtran_HOWTO" manual for usage information.
+-- The source comments contain changelog notes.
+\@IEEEtrantmpdimenA=\dimen102
+\@IEEEtrantmpdimenB=\dimen103
+\@IEEEtrantmpcountA=\count80
+\@IEEEtrantmpcountB=\count81
+\@IEEEtrantmptoksA=\toks14
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 692.
+
+(c:/texlive/2019/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+-- This is a 10 point document.
+\normalsizebaselineskip=\skip41
+\normaljot=\skip42
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 990.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <5> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 990.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 990.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <7> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 990.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 990.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 990.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 990.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <9> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 990.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 990.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 990.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <11> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 990.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <11> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 990.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 990.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 990.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 990.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <17> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 990.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 990.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <20> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 990.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 990.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 990.
+\IEEEilabelindentA=\dimen104
+\IEEEilabelindentB=\dimen105
+\IEEEilabelindent=\dimen106
+\IEEEelabelindent=\dimen107
+\IEEEdlabelindent=\dimen108
+\labelindent=\dimen109
+\IEEEiednormlabelsep=\dimen110
+\IEEEiedmathlabelsep=\dimen111
+\IEEEiedtopsep=\skip43
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@IEEEsubequation=\count86
+\abovecaptionskip=\skip44
+\belowcaptionskip=\skip45
+\c@figure=\count87
+\c@table=\count88
+\@IEEEeqnnumcols=\count89
+\@IEEEeqncolcnt=\count90
+\@IEEEtmpitemindent=\dimen112
+\c@biography=\count91
+\@IEEEtranrubishbin=\box27
+)
+** ATTENTION: Overriding command lockouts (line 7).
+** ATTENTION: Overriding IEEE standard margins (line 8).
+(c:/texlive/2019/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(c:/texlive/2019/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks15
+)
+(c:/texlive/2019/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+(c:/texlive/2019/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(c:/texlive/2019/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: dvips.def on input line 99.
+
+(c:/texlive/2019/texmf-dist/tex/latex/graphics-def/dvips.def
+File: dvips.def 2017/06/20 v3.1d Graphics/color driver for dvips
+))
+\Gin@req@height=\dimen113
+\Gin@req@width=\dimen114
+)
+(c:/texlive/2019/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2019/01/01 v2.4 Span multiple rows of a table
+\multirow@colwidth=\skip46
+\multirow@cntb=\count92
+\multirow@dima=\skip47
+\bigstrutjot=\dimen115
+)
+(c:/texlive/2019/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2018/04/16 v5.8 Page Geometry
+
+(c:/texlive/2019/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
+)
+(c:/texlive/2019/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(c:/texlive/2019/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count93
+\Gm@cntv=\count94
+\c@Gm@tempcnt=\count95
+\Gm@bindingoffset=\dimen116
+\Gm@wd@mp=\dimen117
+\Gm@odd@mp=\dimen118
+\Gm@even@mp=\dimen119
+\Gm@layoutwidth=\dimen120
+\Gm@layoutheight=\dimen121
+\Gm@layouthoffset=\dimen122
+\Gm@layoutvoffset=\dimen123
+\Gm@dimlist=\toks16
+)
+(./wcica_latex_sample.aux)
+\openout1 = `wcica_latex_sample.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: dvips
+*geometry* verbose mode - [ preamble ] result:
+* driver: dvips
+* paper: letterpaper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(51.31218pt, 511.67064pt, 51.31218pt)
+* v-part:(T,H,B)=(67.93398pt, 641.75795pt, 85.27806pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=511.67064pt
+* \textheight=641.75795pt
+* \oddsidemargin=-20.95781pt
+* \evensidemargin=-20.95781pt
+* \topmargin=-4.33601pt
+* \headheight=0.0pt
+* \headsep=0.0pt
+* \topskip=12.0pt
+* \footskip=28.90755pt
+* \marginparwidth=20.0pt
+* \marginparsep=10.0pt
+* \columnsep=17.34518pt
+* \skip\footins=10.79993pt plus 4.79993pt minus 2.39996pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumntrue
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Font Info:    Calculating math sizes for size <20> on input line 73.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <20> on input line 73.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <13.99994> on input line 73.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 73.
+(c:/texlive/2019/texmf-dist/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/it' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 73.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 73.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 73.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 73.
+
+Overfull \hbox (2.64755pt too wide) in paragraph at lines 141--141
+[][]|\OT1/ptm/m/n/5 Type 
+ []
+
+
+Overfull \hbox (0.5474pt too wide) in paragraph at lines 141--141
+\OT1/ptm/m/n/5 size 
+ []
+
+
+Overfull \hbox (3.18741pt too wide) in paragraph at lines 141--141
+\OT1/ptm/m/n/5 (pts.)|  
+ []
+
+
+Underfull \hbox (badness 3407) in paragraph at lines 151--151
+\OT1/ptm/m/n/8 ta-bles, ta-ble names[], ta-
+ []
+
+
+Underfull \hbox (badness 2894) in paragraph at lines 151--151
+\OT1/ptm/m/n/8 ble cap-tions, fig-ure cap-
+ []
+
+
+Underfull \hbox (badness 2409) in paragraph at lines 155--155
+[][]\OT1/ptm/m/n/8 Authors af-fil-i-a-tions, main
+ []
+
+
+Overfull \hbox (5.25452pt too wide) in paragraph at lines 155--156
+[]\OT1/ptm/m/n/8 Subheading| 
+ []
+
+
+Overfull \hbox (8.67259pt too wide) in paragraph at lines 134--164
+[][]$[]$ 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 166.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 190.
+File: imagen.eps Graphic file (type eps)
+<imagen.eps> [1
+
+
+] [2]
+
+** Conference Paper **
+Before submitting the final camera ready copy, remember to:
+
+ 1. Manually equalize the lengths of two columns on the last page
+ of your paper;
+
+ 2. Ensure that any PostScript and/or PDF output post-processing
+ uses only Type 1 fonts and that every step in the generation
+ process uses the US letter (8.5in X 11in) paper size.
+
+[3
+
+] (./wcica_latex_sample.aux) ) 
+Here is how much of TeX's memory you used:
+ 1730 strings out of 492624
+ 26432 string characters out of 6133316
+ 106504 words of memory out of 5000000
+ 5671 multiletter control sequences out of 15000+600000
+ 30707 words of font info for 70 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 27i,19n,25p,294b,433s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on wcica_latex_sample.dvi (3 pages, 16924 bytes).
