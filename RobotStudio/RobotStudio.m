@@ -22,7 +22,7 @@ function varargout = RobotStudio(varargin)
 
 % Edit the above text to modify the response to help RobotStudio
 
-% Last Modified by GUIDE v2.5 26-Nov-2019 22:51:31
+% Last Modified by GUIDE v2.5 27-Nov-2019 21:45:56
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -54,6 +54,29 @@ function RobotStudio_OpeningFcn(hObject, eventdata, handles, varargin)
 
 % Choose default command line output for RobotStudio
 handles.output = hObject;
+   set(handles.radiobutton1,'value',1);
+    set(handles.radiobutton2,'value',0);
+    set(handles.radiobutton3,'value',0);
+    set(handles.radiobutton4,'value',0);
+    
+   mdl_puma560
+   p560
+   global g_p560;
+   g_p560 = p560;
+   global g_qn;
+   g_qn = qn;
+   handles.h_qn = qn;
+  % guidata(hObject,handles); 
+   axes(handles.axes1);
+   cla reset
+   g_p560.plot(g_qn)
+   set(handles.slider1,'value',g_qn(1));
+   set(handles.slider2,'value',g_qn(2));
+   set(handles.slider3,'value',g_qn(3));
+   set(handles.slider4,'value',g_qn(4));
+   set(handles.slider5,'value',g_qn(5));
+   set(handles.slider6,'value',g_qn(6));
+
 
 global g_flag_edit;
 g_flag_edit = 0;
@@ -299,6 +322,7 @@ function radiobutton1_Callback(hObject, eventdata, handles)
    handles.h_qn = qn;
    guidata(hObject,handles); 
    axes(handles.axes1);
+   cla reset
    g_p560.plot(g_qn)
    set(handles.slider1,'value',g_qn(1));
    set(handles.slider2,'value',g_qn(2));
@@ -573,7 +597,7 @@ function edit_t_d_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
-
+set(hObject,'string','50');
 
 
 function edit_z_d_Callback(hObject, eventdata, handles)
@@ -672,6 +696,61 @@ function pushbutton_dke_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton_dke (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+global g_p560;
+global g_qn;
+
+X0 = str2double(get(handles.edit_x_d,'String'));
+Y0 = str2double(get(handles.edit_y_d,'String'));
+Z0 = str2double(get(handles.edit_z_d,'String'));
+STEP = str2double(get(handles.edit_t_d,'String'));
+t = 0 : 1 : STEP;
+X1 = str2double(get(handles.edit_x1_d,'String'));
+Y1 = str2double(get(handles.edit_y1_d,'String'));
+Z1 = str2double(get(handles.edit_z1_d,'String'));
+
+T0 = transl(X0,Y0,Z0);      %坐标变换为齐次变换矩阵
+q0 = g_p560.ikine6s(T0);
+plot(g_p560,q0);
+
+T1 = transl(X1,Y1,Z1);  %T1 齐次变换阵
+
+T = ctraj(T0,T1,STEP);  % T 齐次变换阵
+q = g_p560.ikine6s(T);  % q 关节角度
+
+axes(handles.axes2)
+cla reset
+qplot(q);
+title('关节角')
+
+[Xq Yq Zq] = transl(T);
+axes(handles.axes6);
+cla reset  %清除图窗原有内容
+plot(Xq,Yq);
+xlim([-1 1])
+ylim([-1 1])
+title('XY平面投影轨迹');
+
+p = transl(T);
+axes(handles.axes5)
+cla reset
+plot(p)
+% plot(Xq);    % p=transl(T)和[X Y Z]=transl(T) , p和[x y z]的内容是一样的
+% hold on
+% plot(Yq);
+% hold on
+% plot(Zq)
+legend('X','Y','Z')
+title('末端执行器XYZ位置')
+
+axes(handles.axes1)
+plot(g_p560, q);
+
+set(handles.edit_x_d,'string',num2str(X1));
+set(handles.edit_y_d,'string',num2str(Y1));
+set(handles.edit_z_d,'string',num2str(Z1));
+
+
+
 
 
 % --- Executes on button press in pushbutton_sl_jspace.
@@ -679,4 +758,176 @@ function pushbutton_sl_jspace_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton_sl_jspace (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+mdl_puma560
 sl_jspace
+
+
+
+function edit_z1_d_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_z1_d (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit_z1_d as text
+%        str2double(get(hObject,'String')) returns contents of edit_z1_d as a double
+tmp = str2double(get(hObject,'String'));
+if tmp < -0.8
+    tmp = 0.8;
+    set(hObject,'String',num2str(tmp));
+elseif tmp > 0.8
+    tmp = 0.8;
+    set(hObject,'String',num2str(tmp));
+end
+
+
+% --- Executes during object creation, after setting all properties.
+function edit_z1_d_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_z1_d (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+set(hObject,'string','0.5');
+
+
+function edit_x1_d_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_x1_d (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit_x1_d as text
+%        str2double(get(hObject,'String')) returns contents of edit_x1_d as a double
+tmp = str2double(get(hObject,'String'));
+if tmp < -0.8
+    tmp = 0.8;
+    set(hObject,'String',num2str(tmp));
+elseif tmp > 0.8
+    tmp = 0.8;
+    set(hObject,'String',num2str(tmp));
+end
+
+
+% --- Executes during object creation, after setting all properties.
+function edit_x1_d_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_x1_d (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+set(hObject,'string','0');
+
+
+function edit_y1_d_Callback(hObject, eventdata, handles)
+% hObject    handle to edit_y1_d (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit_y1_d as text
+%        str2double(get(hObject,'String')) returns contents of edit_y1_d as a double
+tmp = str2double(get(hObject,'String'));
+if tmp < -0.8
+    tmp = 0.8;
+    set(hObject,'String',num2str(tmp));
+elseif tmp > 0.8
+    tmp = 0.8;
+    set(hObject,'String',num2str(tmp));
+end
+
+
+% --- Executes during object creation, after setting all properties.
+function edit_y1_d_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit_y1_d (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+set(hObject,'string','0.5');   %记录一个悲痛的时刻，debug一个多小时，就是找不到原因，最后发现把你写成了 0,5  fuck
+
+
+% --- Executes on button press in pushbutton_draw_circle.
+function pushbutton_draw_circle_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton_draw_circle (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+global g_p560;
+r = 0.5;
+step = 100;
+X = zeros(1,step);
+Y = zeros(1,step);
+Z = zeros(1,step);
+%T = zeros(1,step);
+for i = 1: step
+    X(i) = r * cos(2*pi/step * i);
+    Y(i) = r * sin(2*pi/step * i);
+   
+    Z(i) = 0.1;
+end
+
+axes(handles.axes6)
+plot(X,Y);
+axis square
+title('XY平面投影轨迹')
+
+%T = transl(X',Y',Z');
+axes(handles.axes1)
+for i = 1:step
+    T = transl(X(i),Y(i),Z(i));
+    q = g_p560.ikine6s(T);
+    plot(g_p560,q);
+end
+
+
+% --- Executes on selection change in listbox1.
+function listbox1_Callback(hObject, eventdata, handles)
+% hObject    handle to listbox1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: contents = cellstr(get(hObject,'String')) returns listbox1 contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from listbox1
+global g_p560;
+global g_qn;
+ Data = cell(6,6);
+V = get(hObject,'value');
+switch V
+    case 2
+        Data = g_p560.jacob0(g_qn);
+        set(handles.uitable1,'data',Data);
+    case 3
+         Data = g_p560.jacobn(g_qn);
+        set(handles.uitable1,'data',Data);
+end
+
+% --- Executes during object creation, after setting all properties.
+function listbox1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to listbox1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: listbox controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+set(hObject,'value',1);
+
+
+% --- Executes during object creation, after setting all properties.
+function uitable1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to uitable1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns
+% called
+set(hObject,'ColumnWidth',{80,80,80,80,80,80});
