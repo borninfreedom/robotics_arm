@@ -77,6 +77,7 @@ handles.output = hObject;
    set(handles.slider5,'value',g_qn(5));
    set(handles.slider6,'value',g_qn(6));
 
+   set(handles.text_state,'string','');
 
 global g_flag_edit;
 g_flag_edit = 0;
@@ -292,6 +293,7 @@ global g_p560;
 global g_qn;
 g_qn = handles.h_qn;
 axes(handles.axes1);
+cla reset
 g_p560.plot(g_qn);
 set(handles.slider1,'value',g_qn(1));
 set(handles.slider2,'value',g_qn(2));
@@ -299,7 +301,19 @@ set(handles.slider3,'value',g_qn(3));
 set(handles.slider4,'value',g_qn(4));
 set(handles.slider5,'value',g_qn(5));
 set(handles.slider6,'value',g_qn(6));
+set(handles.edit_x_d,'string','0.5');
+set(handles.edit_y_d,'string','0');
+set(handles.edit_z_d,'string','0');
+set(handles.edit_x1_d,'string','0');
+set(handles.edit_y1_d,'string','0.5');
+set(handles.edit_z1_d,'string','0.5');
 
+axes(handles.axes2)
+cla reset
+axes(handles.axes5)
+cla reset
+axes(handels.axes6)
+cla reset
 
 % --- Executes on button press in radiobutton1.
 function radiobutton1_Callback(hObject, eventdata, handles)
@@ -308,6 +322,9 @@ function radiobutton1_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 % Hint: get(hObject,'Value') returns toggle state of radiobutton1
+
+    set(handles.text_state,'string','加载模型中...');
+    
     set(handles.radiobutton1,'value',1);
     set(handles.radiobutton2,'value',0);
     set(handles.radiobutton3,'value',0);
@@ -331,7 +348,7 @@ function radiobutton1_Callback(hObject, eventdata, handles)
    set(handles.slider5,'value',g_qn(5));
    set(handles.slider6,'value',g_qn(6));
 
-
+    set(handles.text_state,'string','');
 
 % --- Executes on button press in radiobutton2.
 function radiobutton2_Callback(hObject, eventdata, handles)
@@ -387,6 +404,9 @@ function pushbutton_go_j_Callback(hObject, eventdata, handles)
 global g_p560;
 global g_qn;
 
+set(handles.text_state,'string','请稍等');
+drawnow;
+
 X = str2double(get(handles.editX,'String'))
 Y = str2double(get(handles.editY,'String'))
 Z = str2double(get(handles.editZ,'String'))
@@ -396,6 +416,10 @@ T1 = transl(X,Y,Z);
 t = 0:0.05:time;
 
 traj = g_p560.jtraj(T0,T1,t');
+
+set(handles.text_state,'string',' ');
+drawnow;
+
 axes(handles.axes2);
 cla reset
 qplot(t,traj);
@@ -699,6 +723,9 @@ function pushbutton_dke_Callback(hObject, eventdata, handles)
 global g_p560;
 global g_qn;
 
+set(handles.text_state,'string','请稍等');
+drawnow;
+
 X0 = str2double(get(handles.edit_x_d,'String'));
 Y0 = str2double(get(handles.edit_y_d,'String'));
 Z0 = str2double(get(handles.edit_z_d,'String'));
@@ -716,6 +743,9 @@ T1 = transl(X1,Y1,Z1);  %T1 齐次变换阵
 
 T = ctraj(T0,T1,STEP);  % T 齐次变换阵
 q = g_p560.ikine6s(T);  % q 关节角度
+
+set(handles.text_state,'string',' ');
+drawnow;
 
 axes(handles.axes2)
 cla reset
@@ -971,6 +1001,9 @@ function checkbox_jtraj_Callback(hObject, eventdata, handles)
 
 % Hint: get(hObject,'Value') returns toggle state of checkbox_jtraj
 if get(handles.checkbox_jtraj,'value')
+    set(handles.text_state,'string','请稍等');
+    drawnow;
+
     set(handles.checkbox_jtraj,'value',1);
     set(handles.checkbox_rrmc,'value',0);
     set(handles.checkbox_rrmc2,'value',0);
@@ -982,7 +1015,12 @@ if get(handles.checkbox_jtraj,'value')
                                                       
     global g_p560;
     p560 = g_p560;
+   
     sl_jspace
+    
+    set(handles.text_state,'string',' ');
+    drawnow;
+
 end
 % --- Executes on button press in checkbox_rrmc.
 function checkbox_rrmc_Callback(hObject, eventdata, handles)
@@ -992,6 +1030,9 @@ function checkbox_rrmc_Callback(hObject, eventdata, handles)
 
 % Hint: get(hObject,'Value') returns toggle state of checkbox_rrmc
 if get(handles.checkbox_rrmc,'value')
+    set(handles.text_state,'string','请稍等');
+    drawnow;
+                                                                
     set(handles.checkbox_jtraj,'value',0);
     set(handles.checkbox_rrmc,'value',1);
     set(handles.checkbox_rrmc2,'value',0);
@@ -1003,7 +1044,11 @@ if get(handles.checkbox_rrmc,'value')
                                                       
     global g_p560;
     p560 = g_p560;
+   
     sl_rrmc
+    
+    set(handles.text_state,'string',' ');
+    drawnow;
 end
 % --- Executes on button press in checkbox_rrmc2.
 function checkbox_rrmc2_Callback(hObject, eventdata, handles)
@@ -1013,6 +1058,9 @@ function checkbox_rrmc2_Callback(hObject, eventdata, handles)
 
 % Hint: get(hObject,'Value') returns toggle state of checkbox_rrmc2
 if get(handles.checkbox_rrmc2,'value')
+    set(handles.text_state,'string','请稍等');
+    drawnow;
+                                               
     set(handles.checkbox_jtraj,'value',0);
     set(handles.checkbox_rrmc,'value',0);
     set(handles.checkbox_rrmc2,'value',1);
@@ -1023,6 +1071,10 @@ if get(handles.checkbox_rrmc2,'value')
     set(handles.checkbox_ftorque,'value',0);
                                                       
     sl_rrmc2
+    
+    set(handles.text_state,'string',' ');
+    drawnow;
+
 end
 
 
@@ -1034,6 +1086,9 @@ function checkbox_torque_Callback(hObject, eventdata, handles)
 
 % Hint: get(hObject,'Value') returns toggle state of checkbox_torque
 if get(handles.checkbox_torque,'value')
+    set(handles.text_state,'string','请稍等');
+    drawnow;
+                                                   
     set(handles.checkbox_jtraj,'value',0);
     set(handles.checkbox_rrmc,'value',0);
     set(handles.checkbox_rrmc2,'value',0);
@@ -1047,6 +1102,10 @@ if get(handles.checkbox_torque,'value')
     p560 = g_p560;
     p560 = p560.nofriction()
     sl_ctorque
+    
+    set(handles.text_state,'string',' ');
+    drawnow;
+    
 end
 
 
@@ -1058,6 +1117,9 @@ function checkbox_vel_Callback(hObject, eventdata, handles)
 
 % Hint: get(hObject,'Value') returns toggle state of checkbox_vel
 if get(hObject,'value')
+    set(handles.text_state,'string','请稍等');
+    drawnow;
+                                               
     set(handles.checkbox_jtraj,'value',0);
     set(handles.checkbox_rrmc,'value',0);
     set(handles.checkbox_rrmc2,'value',0);
@@ -1070,6 +1132,10 @@ if get(hObject,'value')
     global g_p560;
     p560 = g_p560;
     vloop_test
+    
+   set(handles.text_state,'string',' ');
+    drawnow;
+    
 end
 
 
@@ -1081,6 +1147,9 @@ function checkbox_pos_Callback(hObject, eventdata, handles)
 
 % Hint: get(hObject,'Value') returns toggle state of checkbox_pos
 if get(hObject,'value')
+    set(handles.text_state,'string','请稍等');
+    drawnow;
+                                                   
     set(handles.checkbox_jtraj,'value',0);
     set(handles.checkbox_rrmc,'value',0);
     set(handles.checkbox_rrmc2,'value',0);
@@ -1093,6 +1162,10 @@ if get(hObject,'value')
     global g_p560;
     p560 = g_p560;
     ploop_test
+    
+   set(handles.text_state,'string',' ');
+    drawnow;
+    
 end
 
 
@@ -1104,6 +1177,9 @@ function checkbox_ztorque_Callback(hObject, eventdata, handles)
 
 % Hint: get(hObject,'Value') returns toggle state of checkbox_ztorque
 if get(hObject,'value')
+    set(handles.text_state,'string','请稍等');
+    drawnow;
+                                                   
     set(handles.checkbox_jtraj,'value',0);
     set(handles.checkbox_rrmc,'value',0);
     set(handles.checkbox_rrmc2,'value',0);
@@ -1116,6 +1192,10 @@ if get(hObject,'value')
     global g_p560;
     p560 = g_p560;
     sl_ztorque
+    
+   set(handles.text_state,'string',' ');
+    drawnow;
+    
 end
 
 
@@ -1127,6 +1207,9 @@ function checkbox_ftorque_Callback(hObject, eventdata, handles)
 
 % Hint: get(hObject,'Value') returns toggle state of checkbox_ftorque
 if get(hObject,'value')
+    set(handles.text_state,'string','请稍等');
+    drawnow;
+                                                   
     set(handles.checkbox_jtraj,'value',0);
     set(handles.checkbox_rrmc,'value',0);
     set(handles.checkbox_rrmc2,'value',0);
@@ -1139,4 +1222,8 @@ if get(hObject,'value')
     global g_p560;
     p560 = g_p560;
     sl_fforward
+    
+   set(handles.text_state,'string',' ');
+    drawnow;
+    
 end
