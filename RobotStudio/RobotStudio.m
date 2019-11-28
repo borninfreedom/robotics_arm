@@ -22,10 +22,10 @@ function varargout = RobotStudio(varargin)
 
 % Edit the above text to modify the response to help RobotStudio
 
-% Last Modified by GUIDE v2.5 27-Nov-2019 21:45:56
+% Last Modified by GUIDE v2.5 28-Nov-2019 15:34:00
 
 % Begin initialization code - DO NOT EDIT
-gui_Singleton = 1;
+gui_Singleton = 0;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
                    'gui_OpeningFcn', @RobotStudio_OpeningFcn, ...
@@ -85,7 +85,7 @@ g_flag_edit = 0;
 guidata(hObject, handles);
 
 % UIWAIT makes RobotStudio wait for user response (see UIRESUME)
-% uiwait(handles.figure1);
+% uiwait(handles.figure_main);
 
 
 % --- Outputs from this function are returned to the command line.
@@ -906,8 +906,38 @@ switch V
         Data = g_p560.jacob0(g_qn);
         set(handles.uitable1,'data',Data);
     case 3
-         Data = g_p560.jacobn(g_qn);
+         Data = g_p560.jacobe(g_qn);
         set(handles.uitable1,'data',Data);
+    case 4
+        J = g_p560.jacob0(g_qn);
+        J = J(1:3,:);
+        J1 = g_p560.jacob0(g_qn);
+        J1 = J1(4:6,:);
+        
+        h = figure_yoshikawa;  %¶à´°¿Ú±à³Ì
+        h = guihandles(h);
+    
+        axes(h.axes1)
+        cla reset
+        plot_ellipse(J*J')
+        
+        axes(h.axes2)
+        cla reset
+        plot_ellipse(J1*J1')
+    case 5
+       data  = cell(1,1);
+       data = g_p560.maniplty(g_qn,'yoshikawa');
+       set(handles.uitable1,'data',data,'FontSize',11);
+    case 6
+        p560 = g_p560;
+        qn = g_qn;
+        Q = p560.gravload(qn);
+        data = cell(1,6);
+        data = Q;
+        set(handles.uitable1,'data',data);
+        
+    case 7
+        h = figure_grav_analy;
 end
 
 % --- Executes during object creation, after setting all properties.
@@ -931,3 +961,182 @@ function uitable1_CreateFcn(hObject, eventdata, handles)
 % handles    empty - handles not created until after all CreateFcns
 % called
 set(hObject,'ColumnWidth',{80,80,80,80,80,80});
+
+
+% --- Executes on button press in checkbox_jtraj.
+function checkbox_jtraj_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox_jtraj (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of checkbox_jtraj
+if get(handles.checkbox_jtraj,'value')
+    set(handles.checkbox_jtraj,'value',1);
+    set(handles.checkbox_rrmc,'value',0);
+    set(handles.checkbox_rrmc2,'value',0);
+    set(handles.checkbox_torque,'value',0);
+    set(handles.checkbox_vel,'value',0);
+    set(handles.checkbox_pos,'value',0);
+    set(handles.checkbox_ztorque,'value',0);
+    set(handles.checkbox_ftorque,'value',0);
+                                                      
+    global g_p560;
+    p560 = g_p560;
+    sl_jspace
+end
+% --- Executes on button press in checkbox_rrmc.
+function checkbox_rrmc_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox_rrmc (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of checkbox_rrmc
+if get(handles.checkbox_rrmc,'value')
+    set(handles.checkbox_jtraj,'value',0);
+    set(handles.checkbox_rrmc,'value',1);
+    set(handles.checkbox_rrmc2,'value',0);
+    set(handles.checkbox_torque,'value',0);
+    set(handles.checkbox_vel,'value',0);
+    set(handles.checkbox_pos,'value',0);
+    set(handles.checkbox_ztorque,'value',0);
+    set(handles.checkbox_ftorque,'value',0);
+                                                      
+    global g_p560;
+    p560 = g_p560;
+    sl_rrmc
+end
+% --- Executes on button press in checkbox_rrmc2.
+function checkbox_rrmc2_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox_rrmc2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of checkbox_rrmc2
+if get(handles.checkbox_rrmc2,'value')
+    set(handles.checkbox_jtraj,'value',0);
+    set(handles.checkbox_rrmc,'value',0);
+    set(handles.checkbox_rrmc2,'value',1);
+    set(handles.checkbox_torque,'value',0);
+    set(handles.checkbox_vel,'value',0);
+    set(handles.checkbox_pos,'value',0);
+    set(handles.checkbox_ztorque,'value',0);
+    set(handles.checkbox_ftorque,'value',0);
+                                                      
+    sl_rrmc2
+end
+
+
+% --- Executes on button press in checkbox_torque.
+function checkbox_torque_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox_torque (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of checkbox_torque
+if get(handles.checkbox_torque,'value')
+    set(handles.checkbox_jtraj,'value',0);
+    set(handles.checkbox_rrmc,'value',0);
+    set(handles.checkbox_rrmc2,'value',0);
+    set(handles.checkbox_torque,'value',1);
+    set(handles.checkbox_vel,'value',0);
+    set(handles.checkbox_pos,'value',0);
+    set(handles.checkbox_ztorque,'value',0);
+    set(handles.checkbox_ftorque,'value',0);
+                                                      
+    global g_p560;
+    p560 = g_p560;
+    p560 = p560.nofriction()
+    sl_ctorque
+end
+
+
+% --- Executes on button press in checkbox_vel.
+function checkbox_vel_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox_vel (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of checkbox_vel
+if get(hObject,'value')
+    set(handles.checkbox_jtraj,'value',0);
+    set(handles.checkbox_rrmc,'value',0);
+    set(handles.checkbox_rrmc2,'value',0);
+    set(handles.checkbox_torque,'value',0);
+    set(handles.checkbox_vel,'value',1);
+    set(handles.checkbox_pos,'value',0);
+    set(handles.checkbox_ztorque,'value',0);
+    set(handles.checkbox_ftorque,'value',0);
+                                                      
+    global g_p560;
+    p560 = g_p560;
+    vloop_test
+end
+
+
+% --- Executes on button press in checkbox_pos.
+function checkbox_pos_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox_pos (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of checkbox_pos
+if get(hObject,'value')
+    set(handles.checkbox_jtraj,'value',0);
+    set(handles.checkbox_rrmc,'value',0);
+    set(handles.checkbox_rrmc2,'value',0);
+    set(handles.checkbox_torque,'value',0);
+    set(handles.checkbox_vel,'value',0);
+    set(handles.checkbox_pos,'value',1);
+    set(handles.checkbox_ztorque,'value',0);
+    set(handles.checkbox_ftorque,'value',0);
+                                                      
+    global g_p560;
+    p560 = g_p560;
+    ploop_test
+end
+
+
+% --- Executes on button press in checkbox_ztorque.
+function checkbox_ztorque_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox_ztorque (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of checkbox_ztorque
+if get(hObject,'value')
+    set(handles.checkbox_jtraj,'value',0);
+    set(handles.checkbox_rrmc,'value',0);
+    set(handles.checkbox_rrmc2,'value',0);
+    set(handles.checkbox_torque,'value',0);
+    set(handles.checkbox_vel,'value',0);
+    set(handles.checkbox_pos,'value',0);
+    set(handles.checkbox_ztorque,'value',1);
+    set(handles.checkbox_ftorque,'value',0);
+                                                            
+    global g_p560;
+    p560 = g_p560;
+    sl_ztorque
+end
+
+
+% --- Executes on button press in checkbox_ftorque.
+function checkbox_ftorque_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox_ftorque (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of checkbox_ftorque
+if get(hObject,'value')
+    set(handles.checkbox_jtraj,'value',0);
+    set(handles.checkbox_rrmc,'value',0);
+    set(handles.checkbox_rrmc2,'value',0);
+    set(handles.checkbox_torque,'value',0);
+    set(handles.checkbox_vel,'value',0);
+    set(handles.checkbox_pos,'value',0);
+    set(handles.checkbox_ztorque,'value',0);
+    set(handles.checkbox_ftorque,'value',1);
+
+    global g_p560;
+    p560 = g_p560;
+    sl_fforward
+end
