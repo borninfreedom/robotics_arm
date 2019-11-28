@@ -65,6 +65,7 @@ handles.output = hObject;
    g_p560 = p560;
    global g_qn;
    g_qn = qn;
+   handles.p560 = p560;
    handles.h_qn = qn;
   % guidata(hObject,handles); 
    axes(handles.axes1);
@@ -1013,9 +1014,9 @@ if get(handles.checkbox_jtraj,'value')
     set(handles.checkbox_ztorque,'value',0);
     set(handles.checkbox_ftorque,'value',0);
                                                       
-    global g_p560;
-    p560 = g_p560;
-   
+  %  global g_p560;
+  %  p560 = g_p560;
+   p560 = handles.p560;
     sl_jspace
     
     set(handles.text_state,'string',' ');
@@ -1042,9 +1043,9 @@ if get(handles.checkbox_rrmc,'value')
     set(handles.checkbox_ztorque,'value',0);
     set(handles.checkbox_ftorque,'value',0);
                                                       
-    global g_p560;
-    p560 = g_p560;
-   
+%     global g_p560;
+%     p560 = g_p560;
+    p560 = handles.p560;
     sl_rrmc
     
     set(handles.text_state,'string',' ');
@@ -1069,7 +1070,8 @@ if get(handles.checkbox_rrmc2,'value')
     set(handles.checkbox_pos,'value',0);
     set(handles.checkbox_ztorque,'value',0);
     set(handles.checkbox_ftorque,'value',0);
-                                                      
+     
+     p560 = handles.p560;
     sl_rrmc2
     
     set(handles.text_state,'string',' ');
@@ -1098,9 +1100,10 @@ if get(handles.checkbox_torque,'value')
     set(handles.checkbox_ztorque,'value',0);
     set(handles.checkbox_ftorque,'value',0);
                                                       
-    global g_p560;
-    p560 = g_p560;
-    p560 = p560.nofriction()
+%     global g_p560;
+%     p560 = g_p560;
+ p560 = handles.p560;
+    p560 = p560.nofriction();
     sl_ctorque
     
     set(handles.text_state,'string',' ');
@@ -1129,8 +1132,9 @@ if get(hObject,'value')
     set(handles.checkbox_ztorque,'value',0);
     set(handles.checkbox_ftorque,'value',0);
                                                       
-    global g_p560;
-    p560 = g_p560;
+%     global g_p560;
+%     p560 = g_p560;
+ p560 = handles.p560;
     vloop_test
     
    set(handles.text_state,'string',' ');
@@ -1159,8 +1163,9 @@ if get(hObject,'value')
     set(handles.checkbox_ztorque,'value',0);
     set(handles.checkbox_ftorque,'value',0);
                                                       
-    global g_p560;
-    p560 = g_p560;
+%     global g_p560;
+%     p560 = g_p560;
+ p560 = handles.p560;
     ploop_test
     
    set(handles.text_state,'string',' ');
@@ -1189,8 +1194,9 @@ if get(hObject,'value')
     set(handles.checkbox_ztorque,'value',1);
     set(handles.checkbox_ftorque,'value',0);
                                                             
-    global g_p560;
-    p560 = g_p560;
+%     global g_p560;
+%     p560 = g_p560;
+ p560 = handles.p560;
     sl_ztorque
     
    set(handles.text_state,'string',' ');
@@ -1218,9 +1224,10 @@ if get(hObject,'value')
     set(handles.checkbox_pos,'value',0);
     set(handles.checkbox_ztorque,'value',0);
     set(handles.checkbox_ftorque,'value',1);
-
-    global g_p560;
-    p560 = g_p560;
+% 
+%     global g_p560;
+%     p560 = g_p560;
+ p560 = handles.p560;
     sl_fforward
     
    set(handles.text_state,'string',' ');
